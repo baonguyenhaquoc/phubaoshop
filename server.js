@@ -12,16 +12,15 @@ app.use(bodyParser.json());
 app.use("/api/products/", productsRoute);
 app.use("/api/users/" , userRoute);
 
-if (process.env.NODE_ENV === 'production')
+if (process.env.NODE_ENV === 'production') 
 {
-  app.use('/', express.static('client/build'))
+  app.use('/' , express.static('client/build'))
 
-  app.get('*' , ( req ,res)=>{
-    res.sendFile(patch.resolve(__dirname , 'client/build/index.html')
+  app.get('*' , (req,res) => {
+    res.sendFile(patch.resolve(__dirname , 'client/build/index.html'))
   })
-  
 }
   
 
-  const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Node JS Server Started`));
